@@ -25,7 +25,7 @@ SECRET_KEY = 'htg=s^sv(o9uwy#)ez+3n(88yssw%cv9mdm^xv8t7i=t7483&v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-env.eba-f6midrp8.us-east-2.elasticbeanstalk.com',
+ALLOWED_HOSTS = ['poetracker-dev.us-east-2.elasticbeanstalk.com',
                  '127.0.0.1']
 
 
