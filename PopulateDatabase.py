@@ -3,6 +3,31 @@ import time
 import sys
 import re
 import psycopg2
+import os
+
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'poetracker',
+            'USER': 'postgres',
+            'PASSWORD': 'crinkle',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+
 
 class Sniper:
     def __init__(self):
@@ -15,7 +40,9 @@ class Sniper:
         next_change_id = r.json().get('next_change_id')
         print(next_change_id)
 
-        conn = psycopg2.connect(host="localhost", database="poetracker", user="postgres", password="crinkle", port=5432)
+        conn = psycopg2.connect(host=DATABASES['default']['HOST'], database=DATABASES['default']['NAME'],
+                                user=DATABASES['default']['USER'], password=DATABASES['default']['PASSWORD'],
+                                port=DATABASES['default']['PORT'])
         cur = conn.cursor()
         item_sql = """INSERT INTO itemviewer_item(icon, league, name, typeline, ilvl, note)
                         VALUES(%s, %s, %s, %s, %s, %s) RETURNING id;"""
