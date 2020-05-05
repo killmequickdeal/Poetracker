@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['poetracker-dev.us-east-2.elasticbeanstalk.com',
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'itemviewer.apps.ItemviewerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
