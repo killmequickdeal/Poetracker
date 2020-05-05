@@ -26,6 +26,7 @@ SECRET_KEY = 'htg=s^sv(o9uwy#)ez+3n(88yssw%cv9mdm^xv8t7i=t7483&v'
 DEBUG = True
 
 ALLOWED_HOSTS = ['poetracker-dev.us-east-2.elasticbeanstalk.com',
+                 'poetracker-env-prod.eba-f6midrp8.us-east-2.elasticbeanstalk.com',
                  '127.0.0.1']
 
 
