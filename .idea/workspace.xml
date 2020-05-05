@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08011a9c-59af-4d07-a49e-6dffa9bc7925" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Poetracker/Poetracker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Poetracker/Poetracker/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="08011a9c-59af-4d07-a49e-6dffa9bc7925" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +133,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-1760" />
     <option name="y" value="548" />
-    <option name="width" value="1328" />
+    <option name="width" value="1332" />
     <option name="height" value="816" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -249,7 +247,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1760" y="548" width="1328" height="816" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15658915" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
