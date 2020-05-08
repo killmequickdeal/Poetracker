@@ -10,6 +10,9 @@ class Item(models.Model):
     ilvl = models.IntegerField(default=0)
     note = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class Property(models.Model):
     PROPERTY_CHOICES = (
@@ -24,7 +27,13 @@ class Property(models.Model):
                             choices=PROPERTY_CHOICES,
                             default="E")
 
+    def __str__(self):
+        return self.mod
+
 
 class Categories(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name

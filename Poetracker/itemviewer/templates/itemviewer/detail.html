@@ -1,0 +1,6 @@
+<h1>{{ item.typeline }}</h1>
+<ul>
+{% for property in item.property_set.all %}
+    <li>{{ property.mod }}</li>
+{% endfor %}
+</ul>
