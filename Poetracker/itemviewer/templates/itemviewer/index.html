@@ -2,26 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Search</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
     <body>
-    {% if latest_items %}
-        <ul>
-        {% for item in latest_items %}
-            <li><a href="{% url 'itemviewer:detail' item.id %}">{{ item.typeline }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No items are available.</p>
-    {% endif %}
-
-    <form class="form-inline my-2 my-lg-0" action="{% url 'itemviewer:search_results' %}" method="get">
-        <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <h1 style="text-align:center">Enter search terms to find items</h1>
+    <!--create a form which when submitted makes a query on the database and redirects to the search results page with the results of the query-->
+    <form action="{% url 'itemviewer:search_results' %}" method="get">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="form-group col-4" >
+                    <label for="name">Item Name (Optional)</label>
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter item name" aria-label="Search" aria-describedby="nameHelp">
+                    <small id="nameHelp" class="form-text text-muted">Example: Shavronne's Wrappings</small>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group col-4">
+                    <label for="type">Item Type (Optional)</label>
+                    <input class="form-control mr-sm-2" id="type" name="type" type="text" placeholder="Enter item type" aria-label="Search" aria-describedby="typeHelp">
+                    <small id="typeHelp" class="form-text text-muted">Example: Occultist's Vestment</small>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group col-4">
+                    <label for="league">Item League (Optional)</label>
+                    <input class="form-control mr-sm-2" id="league" name="league" type="text" placeholder="Enter item league" aria-label="Search" aria-describedby="leagueHelp">
+                    <small id="leagueHelp" class="form-text text-muted">Example: Occultist's Vestment</small>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </div>
     </form>
 </body>
 </html>

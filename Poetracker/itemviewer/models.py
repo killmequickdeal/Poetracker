@@ -1,7 +1,7 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 
 
+# create database models
 class Item(models.Model):
     icon = models.CharField(max_length=500)
     league = models.CharField(max_length=30)

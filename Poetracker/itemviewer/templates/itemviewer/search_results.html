@@ -2,15 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Results</title>
+    <!--load in bootstrap for prettyness-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <h1>Search Results</h1>
-    <ul>
+    <!--state the number of results-->
+    <h1 style="text-align:center">{{item_list.count}} Results</h1>
+    <!--create a list of items-->
+    <ul class="list-inline justify-content-center">
+        <!--for each item in the list-->
         {% for item in item_list %}
-            <li>
-                <a href="{% url 'itemviewer:detail' item.id %}">{{ item.typeline }}</a>
-            </li>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!--display its' info as a button for mouseover effect-->
+                    <button class="list-inline-item list-group-item-action col-6" align="center">
+                        <div align="center"><text>{{ item.name|add:", "|add:item.typeline  }}</text><br>
+                        <hr></hr>
+                        <text>League: {{ item.league }}</text><br>
+                        <text>item level: {{ item.ilvl }}</text><br>
+                        <text>{{ item.note }}</text>
+                             </div>
+                        <hr></hr>
+                        <ul>
+                            {% for property in item.property_set.all %}
+                                <li>{{ property.mod }}</li>
+                            {% endfor %}
+                        </ul>
+                        <hr></hr>
+                        <img src={{ item.icon }} style="display: block; margin-left: auto; margin-right: auto;">
+                    </button>
+                </div>
+            </div>
+
         {% endfor %}
     </ul>
 </body>

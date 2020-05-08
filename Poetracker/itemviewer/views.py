@@ -1,30 +1,11 @@
-from django.shortcuts import render, get_object_or_404
 from .models import Item
-from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic import ListView, TemplateView
 from django.db.models import Q
 
 
-class IndexView(ListView):
+# define the index view
+class IndexView(TemplateView):
     template_name = 'itemviewer/index.html'
-    context_object_name = 'latest_items'
-
-    def get_queryset(self):
-        return Item.objects.order_by('-id')[:25]
-    # latest_items = Item.objects.order_by('-id')[:25]
-    # context = {'latest_items': latest_items}
-    # context = {}
-    # if 'search' in request.GET:
-    #     latest_items = Item.objects.order_by('-id')[:25]
-    #     context = {'latest_items': latest_items}
-    # return render(request, 'itemviewer/index.html', context)
-
-
-class DetailView(DetailView):
-    template_name = 'itemviewer/detail.html'
-    context_object_name = 'item'
-
-    def get_queryset(self):
-        return Item.objects
 
 
 class SearchView(ListView):
@@ -32,8 +13,10 @@ class SearchView(ListView):
     template_name = 'itemviewer/search_results.html'
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
+        name_query = self.request.GET.get('name')
+        type_query = self.request.GET.get('type')
+        league_query = self.request.GET.get('league')
         item_list = Item.objects.filter(
-            Q(typeline__icontains=query)
-        )[:100]
+            Q(typeline__icontains=type_query) & Q(name__icontains=name_query) & Q(league__icontains=league_query)
+        )[:500]
         return item_list
